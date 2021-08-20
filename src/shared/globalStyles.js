@@ -98,19 +98,19 @@ export const globalStyles = StyleSheet.create({
   smallSubTextLight: {
     justifyContent: "center",
     color: light,
-    fontSize: 24,
+    fontSize: width/16,
     fontFamily: "DMSans-regular",
   },
   midSubTextLight: {
     justifyContent: "center",
     color: light,
-    fontSize: 58,
+    fontSize: width/9,
     fontFamily: "CourierPrime-bold",
   },
   bigSubTextLight: {
     justifyContent: "center",
     color: light,
-    fontSize: 140,
+    fontSize: width/3.5,
     fontFamily: "CourierPrime-bold",
     letterSpacing: -10,
   },
