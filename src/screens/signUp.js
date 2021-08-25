@@ -1,10 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import FormButton from "../shared/formButton";
 import FormInput from "../shared/formInput";
 import SocialButton from "../shared/socialButton";
+import * as firebase from "firebase";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
@@ -35,15 +36,33 @@ const LoginScreen = ({ navigation }) => {
 
       <FormInput
         labelValue={confirmPassword}
-        onChangeText={(userPassword) => setConfirmPassword(userConfirmPassword)}
+        onChangeText={(userConfirmPassword) =>
+          setConfirmPassword(userConfirmPassword)
+        }
         placeholderText="Confirm Password"
         iconType="lock"
         secureTextEntry={true}
       />
 
+      {/* Sign Up Button */}
       <FormButton
         buttonTitle="Sign Up"
-        onPress={() => alert("Sign Up Clicked!")}
+        onPress={() => {
+          if (password !== confirmPassword) {
+            Alert.alert("Passwords do not match");
+            return;
+          }
+
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(
+              () => {},
+              (error) => {
+                Alert.alert(error.message);
+              }
+            );
+        }}
       />
 
       <View style={styles.textPrivate}>

@@ -1,10 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import FormButton from "../shared/formButton";
 import FormInput from "../shared/formInput";
 import SocialButton from "../shared/socialButton";
+import * as firebase from "firebase";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
@@ -31,9 +32,22 @@ const LoginScreen = ({ navigation }) => {
         secureTextEntry={true}
       />
 
+      {/* Sign In Button */}
       <FormButton
         buttonTitle="Sign In"
-        onPress={() => alert("Sign In Clicked!")}
+        onPress={() => {
+          firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(
+              () => {
+                Alert.alert("Login Successful!");
+              },
+              (error) => {
+                Alert.alert(error.message);
+              }
+            );
+        }}
       />
 
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>

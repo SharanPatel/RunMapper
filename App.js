@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 
 import { useFonts } from "expo-font";
 import Providers from "./src/navigation";
+import * as firebase from "firebase";
+
+import ApiKeys from "./firebase";
 
 const App = () => {
   const [loaded] = useFonts({
@@ -20,6 +23,10 @@ const App = () => {
 
   if (!loaded) {
     return null;
+  }
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(ApiKeys.FirebaseConfig);
   }
 
   return <Providers />;
