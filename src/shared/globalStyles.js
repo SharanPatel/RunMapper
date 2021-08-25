@@ -1,53 +1,53 @@
-import React from "react";
-import { StyleSheet, Dimensions } from "react-native";
+import React from 'react'
+import { StyleSheet, Dimensions } from 'react-native'
 
 //get width of screen
-const width = Math.round(Dimensions.get("window").width);
+const width = Math.round(Dimensions.get('window').width)
 //color scheme
-const dark = "#29252c";
-const primary = "#33425b";
-const secondary = "#f33535";
-const light = "#ececec";
+const dark = '#29252c'
+const primary = '#33425b'
+const secondary = '#f33535'
+const light = '#ececec'
 
 export const globalStyles = StyleSheet.create({
   containerLight: {
     backgroundColor: light,
     flex: 1,
     //justifyContent: "space-evenly",
-    alignItems: "center",
+    alignItems: 'center',
   },
   containerDark: {
     backgroundColor: dark,
     flex: 2,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   containerSecondary: {
     backgroundColor: secondary,
     flex: 2,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textPrimary: {
     color: primary,
     fontSize: 28,
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
   },
   textSecondary: {
     color: secondary,
     fontSize: 28,
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
   },
   textLight: {
     color: light,
     fontSize: 28,
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
   },
   inputView: {
     width: width * 0.9,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingVertical: 5,
   },
   inputLight: {
@@ -60,7 +60,7 @@ export const globalStyles = StyleSheet.create({
     padding: 5,
     paddingHorizontal: 10,
     color: light,
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
     fontSize: 18,
   },
   inputPrimary: {
@@ -73,7 +73,7 @@ export const globalStyles = StyleSheet.create({
     padding: 5,
     paddingHorizontal: 10,
     color: dark,
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
     fontSize: 18,
   },
   inputSecondary: {
@@ -86,117 +86,117 @@ export const globalStyles = StyleSheet.create({
     padding: 5,
     paddingHorizontal: 10,
     color: secondary,
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
     fontSize: 18,
   },
   subTextLight: {
-    justifyContent: "center",
+    justifyContent: 'center',
     color: light,
     fontSize: 22,
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
   },
   smallSubTextLight: {
-    justifyContent: "center",
+    justifyContent: 'center',
     color: light,
-    fontSize: width/16,
-    fontFamily: "DMSans-regular",
+    fontSize: width / 16,
+    fontFamily: 'DMSans-regular',
   },
   midSubTextLight: {
-    justifyContent: "center",
+    justifyContent: 'center',
     color: light,
-    fontSize: width/9,
-    fontFamily: "CourierPrime-bold",
+    fontSize: width / 9,
+    fontFamily: 'CourierPrime-bold',
   },
   bigSubTextLight: {
-    justifyContent: "center",
+    justifyContent: 'center',
     color: light,
-    fontSize: width/3.5,
-    fontFamily: "CourierPrime-bold",
+    fontSize: width / 3.5,
+    fontFamily: 'CourierPrime-bold',
     letterSpacing: -10,
   },
   subTextDark: {
     width: width * 0.3,
     color: dark,
     fontSize: 20,
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
   },
   subTextSecondary: {
     width: width * 0.3,
     color: secondary,
     fontSize: 22,
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
   },
   horizontalSpaceBetween: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   horizontalSpaceAroundFlex: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-around",
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
   horizontalSpaceAround: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
   header: {
-    width: "100%",
-    height: "10%",
+    width: '100%',
+    height: '10%',
     minHeight: 90,
     backgroundColor: primary,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerLayout: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: 'space-between',
+    alignItems: 'center',
     margin: 15,
   },
   footer: {
-    width: "100%",
+    width: '100%',
     height: 75,
     paddingBottom: 10,
-    flexDirection: "row",
+    flexDirection: 'row',
     backgroundColor: primary,
-    justifyContent: "flex-end",
-    alignItems: "center",
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   mapStyle: {
-    width: "100%",
+    width: '100%',
     flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
   },
   mapStyleFlex: {
-    width: "100%",
-    flexDirection: "row",
+    width: '100%',
+    flexDirection: 'row',
     flex: 1,
   },
   center: {
-    //flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   timeAndDistData: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 20,
     paddingVertical: 35,
     borderBottomColor: light,
   },
   speedData: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   button: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingBottom: 25,
     paddingTop: 10,
   },
@@ -204,17 +204,17 @@ export const globalStyles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   footerTextLight: {
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
     fontSize: 12,
     color: light,
   },
   footerTextSecondary: {
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
     fontSize: 12,
     color: secondary,
   },
   playPauseStopIcons: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   paddingPlayPauseStopIcons: {
     paddingHorizontal: 60,
@@ -234,64 +234,64 @@ export const globalStyles = StyleSheet.create({
   paddingVertical: {
     paddingVertical: 10,
   },
-});
+})
 
 export const globalDesign = {
-  width: Math.round(Dimensions.get("window").width),
+  width: Math.round(Dimensions.get('window').width),
   dark: dark,
   primary: primary,
   secondary: secondary,
   light: light,
-};
+}
 
 export const getDateAndTime = () => {
-  let date = new Date().getDate(); //To get the Current Date
-  let month = new Date().getMonth() + 1; //To get the Current Month
-  let year = new Date().getFullYear(); //To get the Current Year
-  let hour = new Date().getHours(); //To get the Current Hours
-  let min = new Date().getMinutes(); //To get the Current Minutes
-  let ampm = "am";
+  let date = new Date().getDate() //To get the Current Date
+  let month = new Date().getMonth() + 1 //To get the Current Month
+  let year = new Date().getFullYear() //To get the Current Year
+  let hour = new Date().getHours() //To get the Current Hours
+  let min = new Date().getMinutes() //To get the Current Minutes
+  let ampm = 'am'
 
-  if (month == 1) month = "Jan";
-  else if (month == 2) month = "Feb";
-  else if (month == 3) month = "Mar";
-  else if (month == 4) month = "Apr";
-  else if (month == 5) month = "May";
-  else if (month == 6) month = "June";
-  else if (month == 7) month = "July";
-  else if (month == 8) month = "Aug";
-  else if (month == 9) month = "Sept";
-  else if (month == 10) month = "Oct";
-  else if (month == 11) month = "Nov";
-  else month = "Dec";
+  if (month == 1) month = 'Jan'
+  else if (month == 2) month = 'Feb'
+  else if (month == 3) month = 'Mar'
+  else if (month == 4) month = 'Apr'
+  else if (month == 5) month = 'May'
+  else if (month == 6) month = 'June'
+  else if (month == 7) month = 'July'
+  else if (month == 8) month = 'Aug'
+  else if (month == 9) month = 'Sept'
+  else if (month == 10) month = 'Oct'
+  else if (month == 11) month = 'Nov'
+  else month = 'Dec'
 
-  if (min <= 9) min = "0" + min;
+  if (min <= 9) min = '0' + min
   if (hour >= 12) {
-    ampm = "pm";
-    if (hour > 12) hour = hour - 12;
+    ampm = 'pm'
+    if (hour > 12) hour = hour - 12
   }
-  if (hour == 0) hour = 12;
-  return month + " " + date + ", " + year + " - " + hour + ":" + min + ampm;
-};
+  if (hour == 0) hour = 12
+  return month + ' ' + date + ', ' + year + ' - ' + hour + ':' + min + ampm
+}
 
 export const getTitle = () => {
-  let day = new Date().getDay();
-  let hour = new Date().getHours(); //To get the Current Hours
-  let timeOfDay = "Morning";
+  let day = new Date().getDay()
+  let hour = new Date().getHours() //To get the Current Hours
+  let timeOfDay = 'Morning'
 
-  if (day == 0) day = "Sunday";
-  else if (day == 1) day = "Monday";
-  else if (day == 2) day = "Tuesday";
-  else if (day == 3) day = "Wednesday";
-  else if (day == 4) day = "Thursday";
-  else if (day == 5) day = "Friday";
-  else if (day == 6) day = "Saturday";
+  if (day == 0) day = 'Sunday'
+  else if (day == 1) day = 'Monday'
+  else if (day == 2) day = 'Tuesday'
+  else if (day == 3) day = 'Wednesday'
+  else if (day == 4) day = 'Thursday'
+  else if (day == 5) day = 'Friday'
+  else if (day == 6) day = 'Saturday'
 
-  if (hour >= 21) timeOfDay = "Night";
-  else if (hour >= 17) timeOfDay = "Evening";
-  else if (hour >= 12) timeOfDay = "Afternoon";
-  return day + " " + timeOfDay + " Run";
-};
+  if (hour >= 21) timeOfDay = 'Night'
+  else if (hour >= 17) timeOfDay = 'Evening'
+  else if (hour >= 12) timeOfDay = 'Afternoon'
+  return day + ' ' + timeOfDay + ' Run'
+}
 
 export const distanceInKmBetweenEarthCoordinates = (lat1, lon1, lat2, lon2) => {
   //console.log(lat1, lon1, "    ", lat2, lon2);
@@ -304,72 +304,76 @@ export const distanceInKmBetweenEarthCoordinates = (lat1, lon1, lat2, lon2) => {
   //console.log("Lat: ", lat2 - lat1);
 
   //console.log("Lon: ", lon2 - lon1);
-  const R = 6371e3; // metres
-  const φ1 = (lat1 * Math.PI) / 180; // φ, λ in radians
-  const φ2 = (lat2 * Math.PI) / 180;
-  const Δφ = ((lat2 - lat1) * Math.PI) / 180;
-  const Δλ = ((lon2 - lon1) * Math.PI) / 180;
+  const R = 6371e3 // metres
+  const φ1 = (lat1 * Math.PI) / 180 // φ, λ in radians
+  const φ2 = (lat2 * Math.PI) / 180
+  const Δφ = ((lat2 - lat1) * Math.PI) / 180
+  const Δλ = ((lon2 - lon1) * Math.PI) / 180
 
-  const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const a =
+    Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+    Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 
-  let d = R * c; // in metres
+  let d = R * c // in metres
 
   //if (d <= 3) d = 0;
   //`else d = Math.floor(d);
 
   //console.log("D: ", d);
-  d = d / 1000;
+  d = d / 1000
 
-  return d;
-};
+  return d
+}
 
 export const calculateAvgSpeed = (distanceInM, seconds) => {
-  let secondsPerKm;
-  if (distanceInM != 0) secondsPerKm = (seconds / distanceInM) * 1000;
-  else secondsPerKm = 0;
+  let secondsPerKm
+  if (distanceInM != 0) secondsPerKm = (seconds / distanceInM) * 1000
+  else secondsPerKm = 0
 
-  let mins = Math.floor(secondsPerKm / 60);
-  let secs = Math.floor(secondsPerKm) % 60;
+  let mins = Math.floor(secondsPerKm / 60)
+  let secs = Math.floor(secondsPerKm) % 60
 
   if (mins > 59) {
-    mins = "00";
-    secs = "00";
+    mins = '00'
+    secs = '00'
   } else {
     if (secs < 10) {
-      secs = "0" + secs;
+      secs = '0' + secs
     }
     if (mins < 10) {
-      mins = "0" + mins;
+      mins = '0' + mins
     }
   }
-  return mins + ":" + secs;
-};
+  return mins + ':' + secs
+}
 
 export const calculateCalories = (distanceKm, minutes, seconds) => {
-  let personsWeight = 136;
+  let personsWeight = 136
   // let walkingMET = 4; // 3.5 mph pace (1.56464 m/s)
   // let joggingMET = 8; // 5 mph pace (2.2352 m/s)
   // let runningMET = 11.5; // 7 mph pace (3.12928 m/s)
 
-  let timeSec = minutes * 60 + seconds;
+  let timeSec = minutes * 60 + seconds
 
-  let pace = (distanceKm * 1000) / timeSec; // unit: m/s
+  let pace = (distanceKm * 1000) / timeSec // unit: m/s
 
-  let METUsed = 0;
+  let METUsed = 0
 
   if (pace < 2.5) {
-    METUsed = Math.floor(pace * 2.237) + 0.5;
+    METUsed = Math.floor(pace * 2.237) + 0.5
   } else {
-    METUsed = Math.floor(pace * 2.237) + 5.5;
+    METUsed = Math.floor(pace * 2.237) + 5.5
   }
 
-  let caloriesBurned = Math.round((7.71617 * METUsed * personsWeight * (Math.round(timeSec) / 60)) / 200);
+  let caloriesBurned = Math.round(
+    (7.71617 * METUsed * personsWeight * (Math.round(timeSec) / 60)) / 200
+  )
 
   // console.log(METUsed, personsWeight, pace);
 
   // console.log(caloriesBurned);
-  return caloriesBurned;
+  return caloriesBurned
 
   // if (speedPerSec <= 1.75) {
   //   return 0.108;
@@ -378,11 +382,11 @@ export const calculateCalories = (distanceKm, minutes, seconds) => {
   // } else if (speedPerSec > 2.75) {
   //   return 0.212;
   // }
-};
+}
 
 export const FormattedDistance = ({ distance }) => {
-  let rounded = Math.round(distance * 100) / 100;
-  if (rounded % 1 == 0) return rounded + ".00";
-  else if (rounded % 0.1 == 0) return rounded + "0";
-  else return rounded;
-};
+  let rounded = Math.round(distance * 100) / 100
+  if (rounded % 1 == 0) return rounded + '.00'
+  else if (rounded % 0.1 == 0) return rounded + '0'
+  else return rounded
+}

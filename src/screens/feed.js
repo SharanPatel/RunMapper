@@ -114,6 +114,12 @@ export default function Feed({ navigation }) {
             />
             <Text style={globalStyles.footerTextSecondary}>Feed</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={globalStyles.center}
+            onPress={() => firebase.auth().signOut()}>
+            <MaterialIcons name='logout' size={30} color={globalDesign.light} />
+            <Text style={globalStyles.footerTextLight}>Log Out</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
