@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Modal } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+  Modal,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import FlatButton from "./button";
 import Flatbutton from "../shared/button";
@@ -51,11 +58,46 @@ export default function Item({ item, deleteRun }) {
   function SelectIcon() {
     //round distance as well
     item.distance = Math.round(item.distance * 100) / 100;
-    if (icon1 != globalDesign.dark) return <MaterialCommunityIcons name="emoticon-cry-outline" size={48} color={globalDesign.secondary} />;
-    else if (icon2 != globalDesign.dark) return <MaterialCommunityIcons name="emoticon-sad-outline" size={48} color={globalDesign.secondary} />;
-    else if (icon3 != globalDesign.dark) return <MaterialCommunityIcons name="emoticon-neutral-outline" size={48} color={globalDesign.secondary} />;
-    else if (icon4 != globalDesign.dark) return <MaterialCommunityIcons name="emoticon-happy-outline" size={48} color={globalDesign.secondary} />;
-    else return <MaterialCommunityIcons name="emoticon-excited-outline" size={48} color={globalDesign.secondary} />;
+    if (icon1 != globalDesign.dark)
+      return (
+        <MaterialCommunityIcons
+          name="emoticon-cry-outline"
+          size={48}
+          color={globalDesign.secondary}
+        />
+      );
+    else if (icon2 != globalDesign.dark)
+      return (
+        <MaterialCommunityIcons
+          name="emoticon-sad-outline"
+          size={48}
+          color={globalDesign.secondary}
+        />
+      );
+    else if (icon3 != globalDesign.dark)
+      return (
+        <MaterialCommunityIcons
+          name="emoticon-neutral-outline"
+          size={48}
+          color={globalDesign.secondary}
+        />
+      );
+    else if (icon4 != globalDesign.dark)
+      return (
+        <MaterialCommunityIcons
+          name="emoticon-happy-outline"
+          size={48}
+          color={globalDesign.secondary}
+        />
+      );
+    else
+      return (
+        <MaterialCommunityIcons
+          name="emoticon-excited-outline"
+          size={48}
+          color={globalDesign.secondary}
+        />
+      );
   }
 
   return (
@@ -99,8 +141,15 @@ export default function Item({ item, deleteRun }) {
                 <Text style={styles.reviewSubtitle}>{item.dateAndTime}</Text>
                 <Text style={styles.reviewTitle}>{item.title}</Text>
               </View>
-              <TouchableOpacity style={styles.logo} onPress={() => setModalOpen(true)}>
-                <AntDesign name="infocirlceo" size={24} color={globalDesign.secondary} />
+              <TouchableOpacity
+                style={styles.logo}
+                onPress={() => setModalOpen(true)}
+              >
+                <AntDesign
+                  name="infocirlceo"
+                  size={24}
+                  color={globalDesign.secondary}
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -124,7 +173,11 @@ export default function Item({ item, deleteRun }) {
                 longitude: item.runPath[0].longitude,
               }}
             />
-            <Polyline coordinates={item.runPath} strokeColor={globalDesign.primary} strokeWidth={5} />
+            <Polyline
+              coordinates={item.runPath}
+              strokeColor={globalDesign.primary}
+              strokeWidth={5}
+            />
           </MapView>
 
           <View style={globalStyles.paddingHorizontal}>

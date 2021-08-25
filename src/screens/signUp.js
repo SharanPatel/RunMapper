@@ -1,16 +1,16 @@
-import { NavigationContainer } from '@react-navigation/native'
-import React, { useState } from 'react'
-import { View, Text, Button, StyleSheet, Alert } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import FormButton from '../shared/formButton'
-import FormInput from '../shared/formInput'
-import SocialButton from '../shared/socialButton'
-import * as firebase from 'firebase'
+import { NavigationContainer } from "@react-navigation/native";
+import React, { useState } from "react";
+import { View, Text, Button, StyleSheet, Alert } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import FormButton from "../shared/formButton";
+import FormInput from "../shared/formInput";
+import SocialButton from "../shared/socialButton";
+import * as firebase from "firebase";
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const [confirmPassword, setConfirmPassword] = useState()
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
 
   return (
     <View style={styles.container}>
@@ -19,18 +19,18 @@ const LoginScreen = ({ navigation }) => {
       <FormInput
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
-        placeholderText='Email'
-        iconType='user'
-        keyboardType='email-address'
-        autoCapitalize='none'
+        placeholderText="Email"
+        iconType="user"
+        keyboardType="email-address"
+        autoCapitalize="none"
         autoCorrect={false}
       />
 
       <FormInput
         labelValue={password}
         onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText='Password'
-        iconType='lock'
+        placeholderText="Password"
+        iconType="lock"
         secureTextEntry={true}
       />
 
@@ -39,18 +39,18 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={(userConfirmPassword) =>
           setConfirmPassword(userConfirmPassword)
         }
-        placeholderText='Confirm Password'
-        iconType='lock'
+        placeholderText="Confirm Password"
+        iconType="lock"
         secureTextEntry={true}
       />
 
       {/* Sign Up Button */}
       <FormButton
-        buttonTitle='Sign Up'
+        buttonTitle="Sign Up"
         onPress={() => {
           if (password !== confirmPassword) {
-            Alert.alert('Passwords do not match')
-            return
+            Alert.alert("Passwords do not match");
+            return;
           }
 
           firebase
@@ -59,89 +59,90 @@ const LoginScreen = ({ navigation }) => {
             .then(
               () => {},
               (error) => {
-                Alert.alert(error.message)
+                Alert.alert(error.message);
               }
-            )
+            );
         }}
       />
 
       <View style={styles.textPrivate}>
         <Text style={styles.color_textPrivate}>
-          By registering, you confirm that you accept our{' '}
+          By registering, you confirm that you accept our{" "}
         </Text>
-        <TouchableOpacity onPress={() => alert('Terms Clicked!')}>
-          <Text style={[styles.color_textPrivate, { color: '#e88832' }]}>
+        <TouchableOpacity onPress={() => alert("Terms Clicked!")}>
+          <Text style={[styles.color_textPrivate, { color: "#e88832" }]}>
             Terms of service
           </Text>
         </TouchableOpacity>
         <Text style={styles.color_textPrivate}> and </Text>
-        <TouchableOpacity onPress={() => alert('Privacy Policy Clicked!')}>
-          <Text style={[styles.color_textPrivate, { color: '#e88832' }]}>
+        <TouchableOpacity onPress={() => alert("Privacy Policy Clicked!")}>
+          <Text style={[styles.color_textPrivate, { color: "#e88832" }]}>
             Privacy Policy
           </Text>
         </TouchableOpacity>
       </View>
 
       <SocialButton
-        buttonTitle='Sign Up with Facebook'
-        btnType='facebook'
-        color='#4867aa'
-        backgroundColor='#e6eaf4'
+        buttonTitle="Sign Up with Facebook"
+        btnType="facebook"
+        color="#4867aa"
+        backgroundColor="#e6eaf4"
         onPress={() => {}}
       />
 
       <SocialButton
-        buttonTitle='Sign Up with Google'
-        btnType='google'
-        color='#de4d41'
-        backgroundColor='#f5e7ea'
+        buttonTitle="Sign Up with Google"
+        btnType="google"
+        color="#de4d41"
+        backgroundColor="#f5e7ea"
         onPress={() => {}}
       />
 
       <TouchableOpacity
         style={styles.navButton}
-        onPress={() => navigation.navigate('Login')}>
+        onPress={() => navigation.navigate("Login")}
+      >
         <Text style={styles.navButtonText}>Have an Account? Sign In</Text>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default LoginScreen
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f9fafd',
+    backgroundColor: "#f9fafd",
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   text: {
-    fontFamily: 'Kufam-SemiBoldItalic',
+    fontFamily: "Kufam-SemiBoldItalic",
     fontSize: 28,
     marginBottom: 10,
-    color: '#051d5f',
+    color: "#051d5f",
   },
   navButton: {
     marginTop: 15,
   },
   navButtonText: {
     fontSize: 18,
-    fontWeight: '500',
-    color: '#2e64e5',
-    fontFamily: 'Lato-Regular',
+    fontWeight: "500",
+    color: "#2e64e5",
+    fontFamily: "Lato-Regular",
   },
   textPrivate: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     marginVertical: 35,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   color_textPrivate: {
     fontSize: 13,
-    fontWeight: '400',
-    fontFamily: 'Lato-Regular',
-    color: 'grey',
+    fontWeight: "400",
+    fontFamily: "Lato-Regular",
+    color: "grey",
   },
-})
+});

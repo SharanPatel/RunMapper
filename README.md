@@ -5,35 +5,48 @@ RunMapper is a GPS fitness-tracking app for iOS that helps users measure their p
 Built by Sharan Patel & Haran Ravindran
 
 # Demo
+
 ![Screenshot 1](https://user-images.githubusercontent.com/65983320/130494170-bc0e2ebe-e686-4dbe-b765-0585d4917f16.png)
 ![Screenshot 2](https://user-images.githubusercontent.com/65983320/130494178-407a7af1-fdff-4177-be87-e02ebec0c9ef.png)
 
 Full demo coming soon!
 
 ### Built With
+
 - [React](https://reactjs.org/docs/getting-started.html)
 - [React Native](https://reactnative.dev/docs/getting-started)
 - [Expo](https://docs.expo.dev/)
 
 # Getting Started
+
 ### Prerequisites
+
 Install NPM
+
 ```
 npm install npm@latest -g
 ```
+
 ### Installation
+
 1. Clone the repo
+
 ```
 git clone https://github.com/SharanPatel/RunMapper.git
 ```
+
 2. Navigate to directory and install dependencies
+
 ```
 npm install
 ```
+
 3. Start local development environment
+
 ```
 npm start
 ```
+
 Once started, click the option to open an iOS simulator or download the expo app and scan the QR code. You're now ready to start developing!
 
 # Contact

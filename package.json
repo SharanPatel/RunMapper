@@ -47,8 +47,25 @@
     "yup": "^0.29.1"
   },
   "devDependencies": {
+    "@babel/core": "~7.9.0",
     "babel-preset-expo": "8.3.0",
-    "@babel/core": "~7.9.0"
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "2.3.2"
   },
-  "private": true
+  "private": true,
+  "name": "runmapper",
+  "description": "RunMapper is a GPS fitness-tracking app for iOS that helps users measure their progress to become stronger runners. Users can track their runs and record key metrics such as time, distance, average pace, calories burned, and run paths.",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SharanPatel/RunMapper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SharanPatel/RunMapper/issues"
+  },
+  "homepage": "https://github.com/SharanPatel/RunMapper#readme"
 }

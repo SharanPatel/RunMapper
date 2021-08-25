@@ -69,16 +69,27 @@ export default function Review({
   return (
     //displays time and distance gathered in start modal and asks user for notes info
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
         <View style={globalStyles.containerLight}>
           <View style={globalStyles.header}>
             <SafeAreaView style={globalStyles.headerLayout}>
               <TouchableOpacity onPress={backPress}>
-                <Ionicons name="ios-arrow-back" size={30} color={globalDesign.light} />
+                <Ionicons
+                  name="ios-arrow-back"
+                  size={30}
+                  color={globalDesign.light}
+                />
               </TouchableOpacity>
               <Text style={globalStyles.textLight}>Review Modal</Text>
               <TouchableOpacity onPress={handleDelete}>
-                <Ionicons name="ios-trash" size={30} color={globalDesign.light} />
+                <Ionicons
+                  name="ios-trash"
+                  size={30}
+                  color={globalDesign.light}
+                />
               </TouchableOpacity>
             </SafeAreaView>
           </View>
@@ -107,7 +118,11 @@ export default function Review({
                     longitude: runPath[runPath.length - 1].longitude,
                   }}
                 />
-                <Polyline coordinates={runPath} strokeColor={globalDesign.primary} strokeWidth={10} />
+                <Polyline
+                  coordinates={runPath}
+                  strokeColor={globalDesign.primary}
+                  strokeWidth={10}
+                />
               </MapView>
             </View>
 
@@ -115,8 +130,16 @@ export default function Review({
               <View style={globalStyles.paddingHorizontal}>
                 <Text style={styles.reviewSubtitle}>{dateAndTime}</Text>
                 <View style={globalStyles.horizontalSpaceBetween}>
-                  <TextInput onChangeText={(val) => setTitle(val)} value={title} style={styles.reviewTitle} />
-                  <Feather name="edit-2" size={18} color={globalDesign.primary} />
+                  <TextInput
+                    onChangeText={(val) => setTitle(val)}
+                    value={title}
+                    style={styles.reviewTitle}
+                  />
+                  <Feather
+                    name="edit-2"
+                    size={18}
+                    color={globalDesign.primary}
+                  />
                 </View>
               </View>
             </Card>
@@ -125,18 +148,29 @@ export default function Review({
               <View style={globalStyles.horizontalSpaceAround}>
                 <View style={styles.statBox}>
                   <View style={styles.logo}>
-                    <Entypo name="location-pin" size={48} color={globalDesign.secondary} />
+                    <Entypo
+                      name="location-pin"
+                      size={48}
+                      color={globalDesign.secondary}
+                    />
                   </View>
                   <View style={styles.statBoxTextContainer}>
                     <Text style={styles.statBoxTextHeader}>Distance</Text>
                     <Text style={styles.statBoxTextHeader}>
-                      <Text style={styles.statBoxTextDynamic}>{Math.round(distance * 100) / 100}</Text> km
+                      <Text style={styles.statBoxTextDynamic}>
+                        {Math.round(distance * 100) / 100}
+                      </Text>{" "}
+                      km
                     </Text>
                   </View>
                 </View>
                 <View style={styles.statBox}>
                   <View style={styles.logo}>
-                    <Entypo name="stopwatch" size={48} color={globalDesign.secondary} />
+                    <Entypo
+                      name="stopwatch"
+                      size={48}
+                      color={globalDesign.secondary}
+                    />
                   </View>
                   <View style={styles.statBoxTextContainer}>
                     <Text style={styles.statBoxTextHeader}>Duration</Text>
@@ -149,23 +183,35 @@ export default function Review({
               <View style={globalStyles.horizontalSpaceAround}>
                 <View style={styles.statBox}>
                   <View style={styles.logo}>
-                    <FontAwesome5 name="running" size={48} color={globalDesign.secondary} />
+                    <FontAwesome5
+                      name="running"
+                      size={48}
+                      color={globalDesign.secondary}
+                    />
                   </View>
                   <View style={styles.statBoxTextContainer}>
                     <Text style={styles.statBoxTextHeader}>Avg Pace</Text>
                     <Text style={styles.statBoxTextHeader}>
-                      <Text style={styles.statBoxTextDynamic}>{avgSpeed}</Text> min/km
+                      <Text style={styles.statBoxTextDynamic}>{avgSpeed}</Text>{" "}
+                      min/km
                     </Text>
                   </View>
                 </View>
                 <View style={styles.statBox}>
                   <View style={styles.logo}>
-                    <FontAwesome5 name="fire" size={48} color={globalDesign.secondary} />
+                    <FontAwesome5
+                      name="fire"
+                      size={48}
+                      color={globalDesign.secondary}
+                    />
                   </View>
                   <View style={styles.statBoxTextContainer}>
                     <Text style={styles.statBoxTextHeader}>Calories</Text>
                     <Text style={styles.statBoxTextHeader}>
-                      <Text style={styles.statBoxTextDynamic}>{Math.round(calories)}</Text> cals
+                      <Text style={styles.statBoxTextDynamic}>
+                        {Math.round(calories)}
+                      </Text>{" "}
+                      cals
                     </Text>
                   </View>
                 </View>
@@ -226,11 +272,19 @@ export default function Review({
 
             <View style={globalStyles.inputView}>
               <Text style={globalStyles.subTextDark}>Notes: </Text>
-              <TextInput style={globalStyles.inputPrimary} onChangeText={(val) => setNotes(val)} value={notes} />
+              <TextInput
+                style={globalStyles.inputPrimary}
+                onChangeText={(val) => setNotes(val)}
+                value={notes}
+              />
             </View>
             <View style={globalStyles.inputView}>
               <Text style={globalStyles.subTextDark}>Category: </Text>
-              <TextInput style={globalStyles.inputPrimary} onChangeText={(val) => setCategory(val)} value={category} />
+              <TextInput
+                style={globalStyles.inputPrimary}
+                onChangeText={(val) => setCategory(val)}
+                value={category}
+              />
             </View>
             <Flatbutton
               text="Save"
