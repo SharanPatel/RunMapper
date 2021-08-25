@@ -1,35 +1,37 @@
-import firebase from "../../../firebase";
-import { createUser } from "./writes";
+import firebase from '../../../firebase'
+import { createUser } from './writes'
 
-export async function getUserById(id, cb) {
-  if (!id || !cb) return null;
+export async function getUserById({ id, cb }) {
+  if (!id || !cb) return null
   firebase
     .firestore()
-    .collection("users")
+    .collection('users')
     .doc(id)
     .onSnapshot((doc) => {
       if (doc.exists) {
-        cb({ ...doc.data(), id });
+        cb({ ...doc.data() })
       } else {
         // Create user if user doesn't exist
-        createUser(id);
+        createUser()
       }
-    });
+    })
 }
 
-export async function getTestMessage() {
-  return await firebase
+export async function getRunsByUserId({ userId, cb }) {
+  if (!userId || !cb) return null
+
+  firebase
     .firestore()
-    .collection("users")
-    .doc("j9ZghKbcvic86r96yePr")
-    .get()
-    .then(async (doc) => {
-      if (doc.exists) {
-        return doc.data().name + " " + doc.data().message;
-      } else {
-        return "this should not happen";
-      }
-    });
+    .collection('users')
+    .doc(userId)
+    .collection('runs')
+    .where('isDeleted', '==', false)
+    .orderBy('created', 'asc')
+    .onSnapshot((query) => {
+      const runs = query?.docs?.map((runDoc) => ({
+        id: runDoc.id,
+        ...runDoc.data(),
+      }))
+      cb(runs)
+    })
 }
-
-export {};

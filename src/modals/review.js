@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from 'react'
 import {
   StyleSheet,
   Text,
@@ -11,82 +11,76 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Alert,
-} from "react-native";
-import { Feather } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import Flatbutton from "../shared/button";
-import { globalStyles, globalDesign } from "../shared/globalStyles";
-import { Ionicons } from "@expo/vector-icons";
-import Card from "../shared/card";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import MapView, { Polyline, Marker } from "react-native-maps";
+} from 'react-native'
+import { Feather } from '@expo/vector-icons'
+import { Entypo } from '@expo/vector-icons'
+import { FontAwesome5 } from '@expo/vector-icons'
+import Flatbutton from '../shared/button'
+import { globalStyles, globalDesign } from '../shared/globalStyles'
+import { Ionicons } from '@expo/vector-icons'
+import Card from '../shared/card'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import MapView, { Polyline, Marker } from 'react-native-maps'
+import { createRun, deleteRun } from '../api/databaseCalls'
+import { UserContext } from '../context'
 
 export default function Review({
-  time,
-  distance,
-  notes,
-  category,
-  dateAndTime,
-  title,
-  setTitle,
-  setNotes,
-  setCategory,
+  id,
   backPress,
-  savePress,
   deletePress,
-  icon1,
-  icon2,
-  icon3,
-  icon4,
-  icon5,
+  savePress,
+  setCategory,
   setIcon1,
   setIcon2,
   setIcon3,
   setIcon4,
   setIcon5,
-  runPath,
-  calories,
-  avgSpeed,
+  setNotes,
+  setTitle,
+  ...runData
 }) {
+  const user = useContext(UserContext)
   const setIconsToDefault = () => {
-    setIcon1(globalDesign.dark);
-    setIcon2(globalDesign.dark);
-    setIcon3(globalDesign.dark);
-    setIcon4(globalDesign.dark);
-    setIcon5(globalDesign.dark);
-  };
+    setIcon1(globalDesign.dark)
+    setIcon2(globalDesign.dark)
+    setIcon3(globalDesign.dark)
+    setIcon4(globalDesign.dark)
+    setIcon5(globalDesign.dark)
+  }
 
   const handleDelete = () => {
-    Alert.alert("Alert", "Are you sure you would like to delete this run?", [
+    Alert.alert('Alert', 'Are you sure you would like to delete this run?', [
       {
-        text: "Cancel",
-        style: "cancel",
+        text: 'Cancel',
+        style: 'cancel',
       },
-      { text: "Yes", onPress: () => deletePress() },
-    ]);
-  };
+      {
+        text: 'Yes',
+        onPress: () =>
+          deleteRun({ userId: user.id, runId: id }).then(deletePress),
+      },
+    ])
+  }
   return (
     //displays time and distance gathered in start modal and asks user for notes info
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
-        style={styles.container}
-      >
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        style={styles.container}>
         <View style={globalStyles.containerLight}>
           <View style={globalStyles.header}>
             <SafeAreaView style={globalStyles.headerLayout}>
               <TouchableOpacity onPress={backPress}>
                 <Ionicons
-                  name="ios-arrow-back"
+                  name='ios-arrow-back'
                   size={30}
                   color={globalDesign.light}
                 />
               </TouchableOpacity>
               <Text style={globalStyles.textLight}>Review Modal</Text>
-              <TouchableOpacity onPress={handleDelete}>
+              <TouchableOpacity disabled={!user?.id} onPress={handleDelete}>
                 <Ionicons
-                  name="ios-trash"
+                  name='ios-trash'
                   size={30}
                   color={globalDesign.light}
                 />
@@ -100,26 +94,27 @@ export default function Review({
                 style={globalStyles.mapStyleFlex}
                 provider={MapView.PROVIDER_GOOGLE}
                 initialRegion={{
-                  latitude: runPath[0].latitude,
-                  longitude: runPath[0].longitude,
+                  latitude: runData.runPath[0].latitude,
+                  longitude: runData.runPath[0].longitude,
                   latitudeDelta: 0.005,
                   longitudeDelta: 0.005,
-                }}
-              >
+                }}>
                 <Marker
                   coordinate={{
-                    latitude: runPath[0].latitude,
-                    longitude: runPath[0].longitude,
+                    latitude: runData.runPath[0].latitude,
+                    longitude: runData.runPath[0].longitude,
                   }}
                 />
                 <Marker
                   coordinate={{
-                    latitude: runPath[runPath.length - 1].latitude,
-                    longitude: runPath[runPath.length - 1].longitude,
+                    latitude:
+                      runData.runPath[runData.runPath.length - 1].latitude,
+                    longitude:
+                      runData.runPath[runData.runPath.length - 1].longitude,
                   }}
                 />
                 <Polyline
-                  coordinates={runPath}
+                  coordinates={runData.runPath}
                   strokeColor={globalDesign.primary}
                   strokeWidth={10}
                 />
@@ -128,15 +123,15 @@ export default function Review({
 
             <Card>
               <View style={globalStyles.paddingHorizontal}>
-                <Text style={styles.reviewSubtitle}>{dateAndTime}</Text>
+                <Text style={styles.reviewSubtitle}>{runData.dateAndTime}</Text>
                 <View style={globalStyles.horizontalSpaceBetween}>
                   <TextInput
                     onChangeText={(val) => setTitle(val)}
-                    value={title}
+                    value={runData.title}
                     style={styles.reviewTitle}
                   />
                   <Feather
-                    name="edit-2"
+                    name='edit-2'
                     size={18}
                     color={globalDesign.primary}
                   />
@@ -149,7 +144,7 @@ export default function Review({
                 <View style={styles.statBox}>
                   <View style={styles.logo}>
                     <Entypo
-                      name="location-pin"
+                      name='location-pin'
                       size={48}
                       color={globalDesign.secondary}
                     />
@@ -158,8 +153,8 @@ export default function Review({
                     <Text style={styles.statBoxTextHeader}>Distance</Text>
                     <Text style={styles.statBoxTextHeader}>
                       <Text style={styles.statBoxTextDynamic}>
-                        {Math.round(distance * 100) / 100}
-                      </Text>{" "}
+                        {Math.round(runData.distance * 100) / 100}
+                      </Text>{' '}
                       km
                     </Text>
                   </View>
@@ -167,7 +162,7 @@ export default function Review({
                 <View style={styles.statBox}>
                   <View style={styles.logo}>
                     <Entypo
-                      name="stopwatch"
+                      name='stopwatch'
                       size={48}
                       color={globalDesign.secondary}
                     />
@@ -175,7 +170,10 @@ export default function Review({
                   <View style={styles.statBoxTextContainer}>
                     <Text style={styles.statBoxTextHeader}>Duration</Text>
                     <Text style={styles.statBoxTextHeader}>
-                      <Text style={styles.statBoxTextDynamic}>{time}</Text> min
+                      <Text style={styles.statBoxTextDynamic}>
+                        {runData.time}
+                      </Text>{' '}
+                      min
                     </Text>
                   </View>
                 </View>
@@ -184,7 +182,7 @@ export default function Review({
                 <View style={styles.statBox}>
                   <View style={styles.logo}>
                     <FontAwesome5
-                      name="running"
+                      name='running'
                       size={48}
                       color={globalDesign.secondary}
                     />
@@ -192,7 +190,9 @@ export default function Review({
                   <View style={styles.statBoxTextContainer}>
                     <Text style={styles.statBoxTextHeader}>Avg Pace</Text>
                     <Text style={styles.statBoxTextHeader}>
-                      <Text style={styles.statBoxTextDynamic}>{avgSpeed}</Text>{" "}
+                      <Text style={styles.statBoxTextDynamic}>
+                        {runData.avgSpeed}
+                      </Text>{' '}
                       min/km
                     </Text>
                   </View>
@@ -200,7 +200,7 @@ export default function Review({
                 <View style={styles.statBox}>
                   <View style={styles.logo}>
                     <FontAwesome5
-                      name="fire"
+                      name='fire'
                       size={48}
                       color={globalDesign.secondary}
                     />
@@ -209,8 +209,8 @@ export default function Review({
                     <Text style={styles.statBoxTextHeader}>Calories</Text>
                     <Text style={styles.statBoxTextHeader}>
                       <Text style={styles.statBoxTextDynamic}>
-                        {Math.round(calories)}
-                      </Text>{" "}
+                        {Math.round(runData.calories)}
+                      </Text>{' '}
                       cals
                     </Text>
                   </View>
@@ -223,48 +223,48 @@ export default function Review({
                 <View style={globalStyles.horizontalSpaceBetween}>
                   <MaterialCommunityIcons
                     onPress={() => {
-                      setIconsToDefault();
-                      setIcon1(globalDesign.secondary);
+                      setIconsToDefault()
+                      setIcon1(globalDesign.secondary)
                     }}
-                    name="emoticon-cry-outline"
+                    name='emoticon-cry-outline'
                     size={48}
-                    color={icon1}
+                    color={runData.icon1}
                   />
                   <MaterialCommunityIcons
                     onPress={() => {
-                      setIconsToDefault();
-                      setIcon2(globalDesign.secondary);
+                      setIconsToDefault()
+                      setIcon2(globalDesign.secondary)
                     }}
-                    name="emoticon-sad-outline"
+                    name='emoticon-sad-outline'
                     size={48}
-                    color={icon2}
+                    color={runData.icon2}
                   />
                   <MaterialCommunityIcons
                     onPress={() => {
-                      setIconsToDefault();
-                      setIcon3(globalDesign.secondary);
+                      setIconsToDefault()
+                      setIcon3(globalDesign.secondary)
                     }}
-                    name="emoticon-neutral-outline"
+                    name='emoticon-neutral-outline'
                     size={48}
-                    color={icon3}
+                    color={runData.icon3}
                   />
                   <MaterialCommunityIcons
                     onPress={() => {
-                      setIconsToDefault();
-                      setIcon4(globalDesign.secondary);
+                      setIconsToDefault()
+                      setIcon4(globalDesign.secondary)
                     }}
-                    name="emoticon-happy-outline"
+                    name='emoticon-happy-outline'
                     size={48}
-                    color={icon4}
+                    color={runData.icon4}
                   />
                   <MaterialCommunityIcons
                     onPress={() => {
-                      setIconsToDefault();
-                      setIcon5(globalDesign.secondary);
+                      setIconsToDefault()
+                      setIcon5(globalDesign.secondary)
                     }}
-                    name="emoticon-excited-outline"
+                    name='emoticon-excited-outline'
                     size={48}
-                    color={icon5}
+                    color={runData.icon5}
                   />
                 </View>
               </View>
@@ -275,7 +275,7 @@ export default function Review({
               <TextInput
                 style={globalStyles.inputPrimary}
                 onChangeText={(val) => setNotes(val)}
-                value={notes}
+                value={runData.notes}
               />
             </View>
             <View style={globalStyles.inputView}>
@@ -283,21 +283,26 @@ export default function Review({
               <TextInput
                 style={globalStyles.inputPrimary}
                 onChangeText={(val) => setCategory(val)}
-                value={category}
+                value={runData.category}
               />
             </View>
             <Flatbutton
-              text="Save"
-              onPress={savePress}
+              text='Save'
+              onPress={() =>
+                createRun({ userId: user.id, runId: id, runData }).then(
+                  savePress
+                )
+              }
               backgroundColor={globalDesign.primary}
               color={globalDesign.light}
               width={globalDesign.width * 0.9}
+              disabled={!user?.id}
             />
           </SafeAreaView>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -311,48 +316,48 @@ const styles = StyleSheet.create({
   },
   bannerText: {
     color: globalDesign.light,
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
     fontSize: 18,
-    textAlign: "center",
+    textAlign: 'center',
   },
   reviewSubtitle: {
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
     color: globalDesign.dark,
     fontSize: 16,
   },
   reviewTitle: {
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
     color: globalDesign.dark,
     fontSize: 24,
     flex: 1,
   },
   statBox: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     marginVertical: 6,
     marginHorizontal: 4,
   },
   statBoxTextContainer: {
     flex: 1,
     padding: 2,
-    justifyContent: "space-around",
+    justifyContent: 'space-around',
   },
   statBoxTextHeader: {
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
     color: globalDesign.dark,
     fontSize: 14,
   },
   statBoxTextDynamic: {
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
     color: globalDesign.dark,
     fontSize: 24,
   },
   logo: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 0.5,
   },
   container: {
     flex: 1,
   },
-});
+})

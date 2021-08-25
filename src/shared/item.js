@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   StyleSheet,
   Text,
@@ -6,104 +6,103 @@ import {
   TouchableOpacity,
   Dimensions,
   Modal,
-} from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import FlatButton from "./button";
-import Flatbutton from "../shared/button";
-import Review from "../modals/review";
-import { globalDesign, globalStyles } from "../shared/globalStyles";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import MapView, { Polyline, Marker } from "react-native-maps";
+} from 'react-native'
+import { AntDesign } from '@expo/vector-icons'
+import FlatButton from './button'
+import Flatbutton from '../shared/button'
+import Review from '../modals/review'
+import { globalDesign, globalStyles } from '../shared/globalStyles'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import MapView, { Polyline, Marker } from 'react-native-maps'
 
-export default function Item({ item, deleteRun }) {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [notes, setNotes] = useState(item.notes);
-  const [category, setCategory] = useState(item.category);
-  const [title, setTitle] = useState(item.title);
-  const [icon1, setIcon1] = useState(item.icon1);
-  const [icon2, setIcon2] = useState(item.icon2);
-  const [icon3, setIcon3] = useState(item.icon3);
-  const [icon4, setIcon4] = useState(item.icon4);
-  const [icon5, setIcon5] = useState(item.icon5);
+export default function Item({ item }) {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [notes, setNotes] = useState(item.notes)
+  const [category, setCategory] = useState(item.category)
+  const [title, setTitle] = useState(item.title)
+  const [icon1, setIcon1] = useState(item.icon1)
+  const [icon2, setIcon2] = useState(item.icon2)
+  const [icon3, setIcon3] = useState(item.icon3)
+  const [icon4, setIcon4] = useState(item.icon4)
+  const [icon5, setIcon5] = useState(item.icon5)
 
   const onBackPress = () => {
-    setNotes(item.notes);
-    setCategory(item.category);
-    setTitle(item.title);
-    setIcon1(item.icon1);
-    setIcon2(item.icon2);
-    setIcon3(item.icon3);
-    setIcon4(item.icon4);
-    setIcon5(item.icon5);
-    setModalOpen(false);
-  };
+    setNotes(item.notes)
+    setCategory(item.category)
+    setTitle(item.title)
+    setIcon1(item.icon1)
+    setIcon2(item.icon2)
+    setIcon3(item.icon3)
+    setIcon4(item.icon4)
+    setIcon5(item.icon5)
+    setModalOpen(false)
+  }
   const onSavePress = () => {
-    item.notes = notes;
-    item.category = category;
-    item.title = title;
-    item.icon1 = icon1;
-    item.icon2 = icon2;
-    item.icon3 = icon3;
-    item.icon4 = icon4;
-    item.icon5 = icon5;
-
-    setModalOpen(false);
-  };
+    item.notes = notes
+    item.category = category
+    item.title = title
+    item.icon1 = icon1
+    item.icon2 = icon2
+    item.icon3 = icon3
+    item.icon4 = icon4
+    item.icon5 = icon5
+    setModalOpen(false)
+  }
 
   const onDeletePress = () => {
-    deleteRun(item.key);
-    setModalOpen(false);
-  };
+    setModalOpen(false)
+  }
 
   function SelectIcon() {
     //round distance as well
-    item.distance = Math.round(item.distance * 100) / 100;
+    item.distance = Math.round(item.distance * 100) / 100
     if (icon1 != globalDesign.dark)
       return (
         <MaterialCommunityIcons
-          name="emoticon-cry-outline"
+          name='emoticon-cry-outline'
           size={48}
           color={globalDesign.secondary}
         />
-      );
+      )
     else if (icon2 != globalDesign.dark)
       return (
         <MaterialCommunityIcons
-          name="emoticon-sad-outline"
+          name='emoticon-sad-outline'
           size={48}
           color={globalDesign.secondary}
         />
-      );
+      )
     else if (icon3 != globalDesign.dark)
       return (
         <MaterialCommunityIcons
-          name="emoticon-neutral-outline"
+          name='emoticon-neutral-outline'
           size={48}
           color={globalDesign.secondary}
         />
-      );
+      )
     else if (icon4 != globalDesign.dark)
       return (
         <MaterialCommunityIcons
-          name="emoticon-happy-outline"
+          name='emoticon-happy-outline'
           size={48}
           color={globalDesign.secondary}
         />
-      );
+      )
     else
       return (
         <MaterialCommunityIcons
-          name="emoticon-excited-outline"
+          name='emoticon-excited-outline'
           size={48}
           color={globalDesign.secondary}
         />
-      );
+      )
   }
 
   return (
     <View>
-      <Modal visible={modalOpen} animationType="slide">
+      <Modal visible={modalOpen} animationType='slide'>
         <Review
+          id={item.id}
           time={item.time}
           distance={item.distance}
           dateAndTime={item.dateAndTime}
@@ -143,10 +142,9 @@ export default function Item({ item, deleteRun }) {
               </View>
               <TouchableOpacity
                 style={styles.logo}
-                onPress={() => setModalOpen(true)}
-              >
+                onPress={() => setModalOpen(true)}>
                 <AntDesign
-                  name="infocirlceo"
+                  name='infocirlceo'
                   size={24}
                   color={globalDesign.secondary}
                 />
@@ -165,8 +163,7 @@ export default function Item({ item, deleteRun }) {
               longitude: item.runPath[0].longitude,
               latitudeDelta: 0.01,
               longitudeDelta: 0.05,
-            }}
-          >
+            }}>
             <Marker
               coordinate={{
                 latitude: item.runPath[0].latitude,
@@ -223,77 +220,77 @@ export default function Item({ item, deleteRun }) {
           </View>
         </View>
         <TouchableOpacity onPress={() => setModalOpen(true)}>
-          <AntDesign name="infocirlceo" size={24} color={dark} />
+          <AntDesign name='infocirlceo' size={24} color={dark} />
         </TouchableOpacity>
       </View> */}
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   modalText: {
     color: globalDesign.dark,
     fontSize: 20,
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
   },
   card: {
     flex: 1,
   },
   cardLeft: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
   },
   cardHorizonatal: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
   },
   cardText: {
     color: globalDesign.dark,
     fontSize: 18,
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
   },
   infoModalView: {
     padding: 10,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   titleView: {
-    alignItems: "center",
+    alignItems: 'center',
   },
 
   reviewTitle: {
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
     color: globalDesign.dark,
     fontSize: 20,
     flex: 1,
   },
   reviewSubtitle: {
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
     color: globalDesign.dark,
     fontSize: 15,
   },
   title: {
     color: globalDesign.secondary,
     fontSize: 18,
-    fontFamily: "DMSans-bold",
+    fontFamily: 'DMSans-bold',
   },
   subtitle: {
     color: globalDesign.dark,
     fontSize: 12,
-    fontFamily: "DMSans-regular",
+    fontFamily: 'DMSans-regular',
   },
 
   mapStyle: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
     //width: "100%",
     height: 150,
     marginVertical: 10,
   },
   logo: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
-});
+})
