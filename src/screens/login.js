@@ -1,11 +1,19 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Text, Button, StyleSheet, Alert } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Alert,
+  Dimensions,
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import FormButton from "../shared/formButton";
 import FormInput from "../shared/formInput";
 import SocialButton from "../shared/socialButton";
 import * as firebase from "firebase";
+import { globalStyles } from "../shared/globalStyles";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
@@ -13,7 +21,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Run Mapper</Text>
+      <Text style={globalStyles.loginTextDark}>Run Mapper</Text>
       <FormInput
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
@@ -49,10 +57,10 @@ const LoginScreen = ({ navigation }) => {
       />
 
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
-        <Text style={styles.navButtonText}>Forgot Password?</Text>
+        <Text style={globalStyles.mediumLoginTextDark}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <SocialButton
+      {/* <SocialButton
         buttonTitle="Sign In with Facebook"
         btnType="facebook"
         color="#4867aa"
@@ -66,13 +74,13 @@ const LoginScreen = ({ navigation }) => {
         color="#de4d41"
         backgroundColor="#f5e7ea"
         onPress={() => {}}
-      />
+      /> */}
 
       <TouchableOpacity
         style={styles.forgotButton}
         onPress={() => navigation.navigate("SignUp")}
       >
-        <Text style={styles.navButtonText}>
+        <Text style={globalStyles.mediumLoginTextDark}>
           Don't have an acount? Create here
         </Text>
       </TouchableOpacity>
@@ -82,12 +90,14 @@ const LoginScreen = ({ navigation }) => {
 
 export default LoginScreen;
 
+const width = Math.round(Dimensions.get("window").width);
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    paddingTop: 50,
+    paddingTop: width / 3,
   },
   logo: {
     height: 150,

@@ -6,6 +6,7 @@ import FormButton from "../shared/formButton";
 import FormInput from "../shared/formInput";
 import SocialButton from "../shared/socialButton";
 import * as firebase from "firebase";
+import { globalDesign, globalStyles } from "../shared/globalStyles";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
@@ -14,7 +15,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Create an Account</Text>
+      <Text style={globalStyles.signupTextDark}>Create an Account</Text>
 
       <FormInput
         labelValue={email}
@@ -56,12 +57,13 @@ const LoginScreen = ({ navigation }) => {
           firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
-            .then(
-              () => {},
-              (error) => {
-                Alert.alert(error.message);
-              }
-            );
+            .then((userData) => {
+              userData.user.sendEmailVerification();
+              console.log(userData);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }}
       />
 
@@ -70,19 +72,23 @@ const LoginScreen = ({ navigation }) => {
           By registering, you confirm that you accept our{" "}
         </Text>
         <TouchableOpacity onPress={() => alert("Terms Clicked!")}>
-          <Text style={[styles.color_textPrivate, { color: "#e88832" }]}>
+          <Text
+            style={[styles.color_textPrivate, { color: globalDesign.dark }]}
+          >
             Terms of service
           </Text>
         </TouchableOpacity>
         <Text style={styles.color_textPrivate}> and </Text>
         <TouchableOpacity onPress={() => alert("Privacy Policy Clicked!")}>
-          <Text style={[styles.color_textPrivate, { color: "#e88832" }]}>
+          <Text
+            style={[styles.color_textPrivate, { color: globalDesign.dark }]}
+          >
             Privacy Policy
           </Text>
         </TouchableOpacity>
       </View>
 
-      <SocialButton
+      {/* <SocialButton
         buttonTitle="Sign Up with Facebook"
         btnType="facebook"
         color="#4867aa"
@@ -96,13 +102,15 @@ const LoginScreen = ({ navigation }) => {
         color="#de4d41"
         backgroundColor="#f5e7ea"
         onPress={() => {}}
-      />
+      /> */}
 
       <TouchableOpacity
         style={styles.navButton}
         onPress={() => navigation.navigate("Login")}
       >
-        <Text style={styles.navButtonText}>Have an Account? Sign In</Text>
+        <Text style={globalStyles.mediumLoginTextDark}>
+          Have an Account? Sign In
+        </Text>
       </TouchableOpacity>
     </View>
   );

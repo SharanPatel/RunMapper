@@ -43,6 +43,30 @@ export const globalStyles = StyleSheet.create({
     fontSize: 28,
     fontFamily: "DMSans-bold",
   },
+  loginTextDark: {
+    color: dark,
+    fontSize: width / 8.5,
+    fontFamily: "DMSans-bold",
+    paddingBottom: width / 12,
+  },
+  smallLoginTextDark: {
+    fontSize: width / 23,
+    fontFamily: "DMSans",
+    paddingLeft: 10,
+  },
+  mediumLoginTextDark: {
+    color: dark,
+    fontSize: width / 25,
+    fontFamily: "DMSans",
+    paddingLeft: 10,
+    paddingTop: 10,
+  },
+  signupTextDark: {
+    color: dark,
+    fontSize: width / 11,
+    fontFamily: "DMSans-bold",
+    paddingBottom: width / 12,
+  },
   inputView: {
     width: width * 0.9,
     flexDirection: "row",
@@ -145,11 +169,11 @@ export const globalStyles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    height: "10%",
-    minHeight: 90,
+    height: "11%",
+    minHeight: 70,
     backgroundColor: primary,
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
   },
   headerLayout: {
@@ -184,6 +208,12 @@ export const globalStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  logoutHide: {
+    padding: 10,
+  },
+  logout: {
+    padding: 10,
+  },
   timeAndDistData: {
     alignItems: "center",
     justifyContent: "center",
@@ -206,6 +236,11 @@ export const globalStyles = StyleSheet.create({
   footerTextLight: {
     fontFamily: "DMSans-bold",
     fontSize: 12,
+    color: light,
+  },
+  headerTextLight: {
+    fontFamily: "DMSans-bold",
+    fontSize: 10,
     color: light,
   },
   footerTextSecondary: {
