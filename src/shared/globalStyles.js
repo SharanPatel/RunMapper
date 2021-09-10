@@ -402,7 +402,7 @@ export const calculateCalories = (distanceKm, minutes, seconds) => {
   }
 
   let caloriesBurned = Math.round(
-    (7.71617 * METUsed * personsWeight * (Math.round(timeSec) / 60)) / 200
+    (7.71617 * METUsed * personsWeight * (Math.round(timeSec) / 60)) / 200 / 2
   );
 
   // console.log(METUsed, personsWeight, pace);
