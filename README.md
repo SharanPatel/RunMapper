@@ -5,14 +5,6 @@ RunMapper is a GPS fitness-tracking app for iOS that helps users measure their p
 
 Built by Sharan Patel & Haran Ravindran
 
-# Demo
-
-https://user-images.githubusercontent.com/65983320/132959158-c9fe2957-e200-4bce-8863-fbba5d948910.mp4
-
-|	|	|
-:-------------------------:|:-------------------------:
-![Screenshot 1](https://user-images.githubusercontent.com/65983320/130494170-bc0e2ebe-e686-4dbe-b765-0585d4917f16.png) |  ![Screenshot 2](https://user-images.githubusercontent.com/65983320/130494178-407a7af1-fdff-4177-be87-e02ebec0c9ef.png)
-
 ### Built With
 
 - [React](https://reactjs.org/docs/getting-started.html)
@@ -20,6 +12,14 @@ https://user-images.githubusercontent.com/65983320/132959158-c9fe2957-e200-4bce-
 - [Expo](https://docs.expo.dev/)
 - [Firebase Authentication](https://firebase.google.com/docs/auth)
 - [Cloud Firestore](https://firebase.google.com/docs/firestore/)
+
+# Demo
+
+|	|	|
+:-------------------------:|:-------------------------:
+![Screenshot 1](https://user-images.githubusercontent.com/65983320/130494170-bc0e2ebe-e686-4dbe-b765-0585d4917f16.png) |  ![Screenshot 2](https://user-images.githubusercontent.com/65983320/130494178-407a7af1-fdff-4177-be87-e02ebec0c9ef.png)
+
+https://user-images.githubusercontent.com/65983320/132959158-c9fe2957-e200-4bce-8863-fbba5d948910.mp4
 
 # Getting Started
 
