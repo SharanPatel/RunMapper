@@ -58,6 +58,6 @@ Sharan Patel - contact@sharanpatel.ca - www.sharanpatel.ca
 
 Double Degree BCS & BBA 2025 Candidate, University of Waterloo
 
-Haran Ravindran - haran26r@gmail.com - www.haranravindran.ca
+Haran Ravindran - haran26r@gmail.com - www.haranravindran.com
 
 BCS 2025 Candidate, University of Waterloo
