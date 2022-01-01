@@ -53,16 +53,9 @@ npm start
 
 Once started, click the option to open an iOS simulator or download the expo app and scan the QR code. You're now ready to start developing!
 
-# Contact
-
+# Collaboraters
 Sharan Patel - contact@sharanpatel.ca - www.sharanpatel.ca
-
-Double Degree BCS & BBA 2025 Candidate
-
-University of Waterloo
+Double Degree BCS & BBA 2025 Candidate, University of Waterloo
 
 Haran Ravindran - haran26r@gmail.com - www.haranravindran.ca
-
-BCS 2025 Candidate
-
-University of Waterloo
+BCS 2025 Candidate, University of Waterloo
